@@ -44,9 +44,10 @@ def compileRegex(replaceInlineMath, replaceClasses, noPunc, puncFile, extractCla
 
     replace = []
     if replaceInlineMath:
+        # <span class=\'mathgroup\'>\$</span>(.*?)<span class=\'mathgroup\'>\$</span>
         replaceItem = []
         replaceItem.append(re.compile(
-            r'<span class=\'mathgroup\'>\$</span>(.*?)<span class=\'mathgroup\'>\$</span>'))
+            r'(<span class=\'mathgroup\'>\\[(]</span>(.*?)<span class=\'mathgroup\'>\\[)]</span>)|(<span class=\'mathgroup\'>\$</span>(.*?)<span class=\'mathgroup\'>\$</span>)'))
         replaceItem.append(replaceInlineMath)
         replace.append(replaceItem)
 
